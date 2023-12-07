@@ -7,9 +7,9 @@ let pp ppf { r; g; b } = Fmt.pf ppf "%i red, %i green, %i blue" r g b
 
 (*  *)
 let isPossible r g b extr = r == extr.r && g == extr.g && b == extr.b
-let redRegex = Str.regexp {|\([0-9]+\) red|}
-let greenRegex = Str.regexp {|\([0-9]+\) green|}
-let blueRegex = Str.regexp {|\([0-9]+\) blue|}
+let redRegex = Str.regexp {|.*\b\([0-9]+\)\b red.*|}
+let greenRegex = Str.regexp {|.*\b\([0-9]+\)\b green.*|}
+let blueRegex = Str.regexp {|.*\b\([0-9]+\)\b blue.*|}
 
 let numFromString r s =
   if Str.string_match r s 0 then int_of_string (Str.matched_group 1 s) else 0
