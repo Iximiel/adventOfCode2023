@@ -13,6 +13,11 @@ let extraction = Alcotest.testable BagOcubes.pp BagOcubes.equal
 let test_read s res () =
   Alcotest.(check extraction) "same extraction" res (BagOcubes.makeExtraction s)
 
+let test_possibleExtraction10_10_10 s res () =
+  Alcotest.(check bool)
+    "same extraction" res
+    (BagOcubes.isPossibleExtraction 10 10 10 s)
+
 let test_gameExtr s res () =
   Alcotest.(check (list extraction))
     "same extraction" res
@@ -112,5 +117,28 @@ let () =
                  BagOcubes.makeExtraction "5 blue, 4 red, 13 green";
                  BagOcubes.makeExtraction "5 green, 1 red";
                ]);
+        ] );
+      ( "test_possibleGames",
+        [
+          test_case "2 blue, 1 red, 2 green" `Quick
+            (test_possibleExtraction10_10_10
+               (BagOcubes.makeExtraction "2 blue, 1 red, 2 green")
+               true);
+          test_case "6 red, 1 blue, 3 green" `Quick
+            (test_possibleExtraction10_10_10
+               (BagOcubes.makeExtraction "6 red, 1 blue, 3 green")
+               true);
+          test_case "8 green, 6 blue, 20 red" `Quick
+            (test_possibleExtraction10_10_10
+               (BagOcubes.makeExtraction "8 green, 6 blue, 20 red")
+               false);
+          test_case "5 blue, 4 red, 13 green" `Quick
+            (test_possibleExtraction10_10_10
+               (BagOcubes.makeExtraction "5 blue, 4 red, 13 green")
+               false);
+          test_case "5 green, 1 red" `Quick
+            (test_possibleExtraction10_10_10
+               (BagOcubes.makeExtraction "5 green, 1 red")
+               true);
         ] );
     ]
