@@ -1,2 +1,3 @@
 (test
- (name test_aoc23_04))
+ (name test_aoc23_04)
+ (libraries alcotest scratcher))

@@ -1,4 +1,4 @@
 (executable
  (public_name aoc23_04)
  (name main)
- (libraries aoc23_04))
+ (libraries scratcher))
