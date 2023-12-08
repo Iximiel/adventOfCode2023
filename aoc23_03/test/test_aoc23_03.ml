@@ -60,6 +60,7 @@ let () =
           test_case "no match" `Quick (test_numberlist_la "...35." ".*...." []);
           test_case "single match" `Quick
             (test_numberlist_la "35..." "..*.." [ 35 ]);
+          test_case "whole line" `Quick (test_numberlist_la "35" ".*" [ 35 ]);
           test_case "single match" `Quick
             (test_numberlist_la (exampleLine 2) "123*5678901" [ 35 ]);
           test_case "single match" `Quick

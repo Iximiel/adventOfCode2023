@@ -4,10 +4,8 @@ let dotOrNUm = Str.regexp {|[\.0-9]|}
 let checkL line pos len =
   if String.equal line "" then false
   else
-    let substr = String.sub line (max 0 (pos - 1)) (len + 2) in
-    print_endline @@ line ^ "->\"" ^ substr ^ "\"";
-    print_endline @@ string_of_int
-    @@ String.length (Str.global_replace dotOrNUm "" substr);
+    let maxlen = min (len + 2) (String.length line - max 0 (pos - 1)) in
+    let substr = String.sub line (max 0 (pos - 1)) maxlen in
     String.length (Str.global_replace dotOrNUm "" substr) > 0
 
 let checkOnline s lb la =
@@ -35,8 +33,8 @@ let checkOnline s lb la =
           int_of_string d :: aux l (pos + String.length d)
         else if checkLAB pos "" d then
           int_of_string d :: aux l (pos + String.length d)
-        else aux l (pos + String.length d)
-    | Delim _ :: [] -> []
+        else aux l (pos + String.length d) (*THIS LINE BLOCKED EVERITHING*)
+    | Delim d :: [] -> if checkLAB pos "" d then [ int_of_string d ] else []
     | Text _ :: [] -> []
     | [] -> []
     (* impossible matches *)
