@@ -96,3 +96,11 @@ let rec tranverse_it line searchStart lb la =
   else []
 
 let tranverse line lb la = tranverse_it line 0 lb la
+
+let rec checkWholeT2 schema =
+  match schema with
+  | lb :: (l :: la :: _ as nextLine) ->
+      List.append (tranverse l lb la) (checkWholeT2 nextLine)
+  | [ lb; l ] -> tranverse l lb ""
+  | [ l ] -> tranverse l "" ""
+  | [] -> []
