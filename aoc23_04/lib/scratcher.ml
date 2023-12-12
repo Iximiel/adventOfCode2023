@@ -25,3 +25,21 @@ let getWinning card =
   in
   let num = aux card.obj in
   if num > 0 then Int.shift_left 1 (num - 1) else 0
+
+let rec calculateWinning cards =
+  match cards with c :: l -> getWinning c :: calculateWinning l | [] -> []
+
+let rec headIncrementer lst num depth =
+  match lst with
+  | [] -> []
+  | h :: t ->
+      if depth == 0 then lst else (h + num) :: headIncrementer t num (depth - 1)
+
+let elaborateWinning wins =
+  let cards = List.init (List.length wins) (Fun.const 1) in
+  let rec aux c w =
+    match w with
+    | [] -> []
+    | nw :: l -> List.hd c :: aux (headIncrementer (List.tl c) (List.hd c) nw) l
+  in
+  aux cards wins
