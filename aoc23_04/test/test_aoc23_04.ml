@@ -17,11 +17,10 @@ let test_incrementer l num rep res () =
     (Scratcher.headIncrementer l num rep)
 
 let test_task2 s res () =
-  Alcotest.(check int)
+  Alcotest.(check @@ list int)
     "same result" res
-    (let rec doSum = function [] -> 0 | i :: l -> i + doSum l in
-     List.map Scratcher.getObjAndGame s
-     |> Scratcher.calculateWinning |> Scratcher.elaborateWinning |> doSum)
+    (List.map Scratcher.getObjAndGame s
+    |> Scratcher.calculateMatches |> Scratcher.elaborateWinning)
 
 let () =
   let open Alcotest in
@@ -74,6 +73,10 @@ let () =
                  "Card 5: 87 83 26 28 32 | 88 30 70 12 93 22 82 36";
                  "Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11";
                ]
-               30);
+               [ 1; 2; 4; 8; 14; 1 ]);
+          test_case "task2" `Quick
+            (test_task2
+               [ "Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53" ]
+               [ 1 ]);
         ] );
     ]

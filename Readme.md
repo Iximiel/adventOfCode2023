@@ -27,3 +27,7 @@ For task 2 instead, I seached for the `*` and looked if they have exactly 2 adia
 Input looks easier, maybe this time no regex
 
 Day 4 task 1 was far mor easier than day3, no need to explain, the task description is how the program works :smile:
+
+Task2 was complex until i read how to increment the head of a list , then it got worse until I stopped using the calculated winning of task 1 as match...
+
+I did also a beautiful refactor of task 1

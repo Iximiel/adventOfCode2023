@@ -1,17 +1,20 @@
+let read_lines (file_name : string) : string list =
+  In_channel.with_open_text file_name In_channel.input_lines
+
+let rec doSum = function [] -> 0 | i :: l -> i + doSum l
+
 let () =
   let filename = "day4" in
-  let mysum = ref 0 in
-  let chan = open_in filename in
-  try
-    while true do
-      let line = input_line chan in
-      mysum := !mysum + (Scratcher.getObjAndGame line |> Scratcher.getWinning)
-    done
-  with End_of_file ->
-    close_in chan;
-    print_string "task 1: ";
-    print_int !mysum;
-    print_endline "";
-    print_string "task 2: ";
-    (* print_int !mypow; *)
-    print_endline ""
+
+  let lines = read_lines filename in
+  print_string "task 1: ";
+
+  doSum (List.map Scratcher.getObjAndGame lines |> Scratcher.calculateWinning)
+  |> print_int;
+  print_endline "";
+  print_string "task 2: ";
+  doSum
+    (List.map Scratcher.getObjAndGame lines
+    |> Scratcher.calculateMatches |> Scratcher.elaborateWinning)
+  |> print_int;
+  print_endline ""

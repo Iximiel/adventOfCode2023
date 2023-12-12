@@ -18,16 +18,20 @@ let getObjAndGame s =
   in
   { obj = List.nth res 0; game = List.nth res 1 }
 
-let getWinning card =
+let getMatches card =
   let rec aux = function
     | [] -> 0
     | a :: l -> (if List.exists (Int.equal a) card.game then 1 else 0) + aux l
   in
-  let num = aux card.obj in
+  aux card.obj
+
+let getWinning card =
+  let num = getMatches card in
   if num > 0 then Int.shift_left 1 (num - 1) else 0
 
-let rec calculateWinning cards =
-  match cards with c :: l -> getWinning c :: calculateWinning l | [] -> []
+let rec calc f cards = match cards with c :: l -> f c :: calc f l | [] -> []
+let calculateWinning = calc getWinning
+let calculateMatches = calc getMatches
 
 let rec headIncrementer lst num depth =
   match lst with
