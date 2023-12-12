@@ -8,9 +8,10 @@ I can define myself a C++ dev, (sometimes I also do some Python), so I am using 
 Let's see if I can learn something
 
 While doing day3 I'm starting to think that I am using a bit too much regex.
-## Day 1s
-
-
+## Day 1
+My solution was to regex all the problems away.
+Ocaml makes finding regex quite easy (apart thata strange  way or declaring raw strings`{||}`)
+s
 ## Day 2
 Task 1 is simply a game of elaborating the text and check if the game is valid (meaning if the number of cubes extracted per color respects the game).
 
