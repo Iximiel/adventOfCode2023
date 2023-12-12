@@ -7,10 +7,10 @@ I can define myself a C++ dev, (sometimes I also do some Python), so I am using 
 
 Let's see if I can learn something
 
-Day 1 is on my other PC (I decided later to set up a git repo), I'll add it hera as soon I go back home
-
 While doing day3 I'm starting to think that I am using a bit too much regex.
-## Day 1
+## Day 1s
+
+
 ## Day 2
 Task 1 is simply a game of elaborating the text and check if the game is valid (meaning if the number of cubes extracted per color respects the game).
 
