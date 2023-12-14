@@ -1,8 +1,8 @@
 let checkint mystring myres () =
-  Alcotest.(check int) "same int" myres (Puzzle.getNum mystring)
+  Alcotest.(check int) "same int" myres (Trebuchet.getNum mystring)
 
 let checkint_better mystring myres () =
-  Alcotest.(check int) "same int" myres (Puzzle.getNumGeneric mystring)
+  Alcotest.(check int) "same int" myres (Trebuchet.getNumGeneric mystring)
 
 let () =
   let open Alcotest in

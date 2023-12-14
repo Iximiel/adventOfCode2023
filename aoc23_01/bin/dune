@@ -1,4 +1,0 @@
-(executable
- (public_name ad01_trebuchet)
- (name main)
- (libraries puzzle))

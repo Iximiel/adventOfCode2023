@@ -34,3 +34,5 @@ let example =
     "60 56 37";
     "56 93 4";
   ]
+
+let _ = example

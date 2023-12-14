@@ -8,6 +8,9 @@ I can define myself a C++ dev, (sometimes I also do some Python), so I am using 
 Let's see if I can learn something
 
 While doing day3 I'm starting to think that I am using a bit too much regex.
+
+At day 5 i decide to move everithing in a single project, this may be a bad idea, fut I think I can reutilize some code with no repetition
+
 ## Day 1
 My solution was to regex all the problems away.
 Ocaml makes finding regex quite easy (apart thata strange  way or declaring raw strings`{||}`)

@@ -1,4 +1,0 @@
-(executable
- (public_name aoc23_03)
- (name main)
- (libraries schematics day3input str))

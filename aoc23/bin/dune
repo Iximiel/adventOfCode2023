@@ -1,0 +1,29 @@
+(executable
+ (public_name aoc23_01)
+ (name day01)
+ (modules day01)
+ (libraries trebuchet))
+
+(executable
+ (public_name aoc23_02)
+ (name day02)
+ (modules day02)
+ (libraries bagOcubes))
+
+(executable
+ (public_name aoc23_03)
+ (name day03)
+ (modules day03)
+ (libraries schematics day3input str))
+
+(executable
+ (public_name aoc23_04)
+ (name day04)
+ (modules day04)
+ (libraries scratcher))
+
+; (executable
+;  (public_name aoc23_05)
+;  (name day05)
+;  (modules day05)
+;  (libraries aoc23_05))

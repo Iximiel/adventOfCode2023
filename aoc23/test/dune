@@ -1,0 +1,23 @@
+(test
+ (name test_aoc23_01)
+ (modules test_aoc23_01)
+ (libraries alcotest trebuchet))
+
+(test
+ (name test_aoc23_02)
+ (modules test_aoc23_02)
+ (libraries alcotest bagOcubes))
+
+(test
+ (name test_aoc23_03)
+ (modules test_aoc23_03)
+ (libraries alcotest schematics))
+
+(test
+ (name test_aoc23_04)
+ (modules test_aoc23_04)
+ (libraries alcotest scratcher))
+
+(test
+ (name test_aoc23_05)
+ (modules test_aoc23_05))

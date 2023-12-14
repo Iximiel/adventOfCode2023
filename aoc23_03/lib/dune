@@ -1,8 +1,0 @@
-(library
- (name schematics)
- (modules Schematics)
- (libraries str))
-
-(library
- (modules Day3input)
- (name day3input))

@@ -1,4 +1,0 @@
-(executable
- (public_name aoc23_02)
- (name main)
- (libraries bagOcubes))

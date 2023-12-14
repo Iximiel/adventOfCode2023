@@ -1,7 +1,7 @@
 let isvalidgame = BagOcubes.isPossibleGame 12 13 14
 
 let () =
-  let filename = "day2" in
+  let filename = "day02" in
   let mysum = ref 0 in
   let mypow = ref 0 in
   let chan = open_in filename in

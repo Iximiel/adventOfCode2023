@@ -1,3 +1,0 @@
-(test
- (name test_aoc23_02)
- (libraries alcotest bagOcubes))

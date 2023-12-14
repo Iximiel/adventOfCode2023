@@ -4,7 +4,7 @@ let read_lines (file_name : string) : string list =
 let rec doSum = function [] -> 0 | i :: l -> i + doSum l
 
 let () =
-  let filename = "day4" in
+  let filename = "day04" in
 
   let lines = read_lines filename in
   print_string "task 1: ";

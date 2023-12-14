@@ -1,3 +1,0 @@
-(test
- (name ad01_trebuchet)
- (libraries alcotest puzzle))

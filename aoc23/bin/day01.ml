@@ -1,4 +1,4 @@
-let file = "input"
+let file = "day01"
 let sum = ref 0
 
 let () =
@@ -8,8 +8,8 @@ let () =
     while true do
       let line = input_line ic in
       (* read line, discard \n *)
-      Printf.printf "%s %i\n" line (Puzzle.getNumGeneric line);
-      sum := !sum + Puzzle.getNumGeneric line
+      Printf.printf "%s %i\n" line (Trebuchet.getNumGeneric line);
+      sum := !sum + Trebuchet.getNumGeneric line
       (* write on the underlying device now *)
     done;
     close_in ic (* close the input channel *)

@@ -1,0 +1,26 @@
+(library
+ (name trebuchet)
+ (modules trebuchet)
+ (libraries str))
+
+(library
+ (name bagOcubes)
+ (modules bagOcubes)
+ (libraries str fmt))
+
+(library
+ (name schematics)
+ (modules Schematics)
+ (libraries str))
+
+(library
+ (modules Day3input)
+ (name day3input))
+
+(library
+ (name scratcher)
+ (modules scratcher)
+ (libraries fmt))
+
+; (library
+;  (name aoc23_05))
