@@ -20,4 +20,5 @@
 
 (test
  (name test_aoc23_05)
- (modules test_aoc23_05))
+ (modules test_aoc23_05)
+ (libraries alcotest gardener))

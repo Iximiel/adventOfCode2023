@@ -36,3 +36,22 @@ let example =
   ]
 
 let _ = example
+(* let interval = Alcotest.testable Gardener.ppint Gardener.equalint *)
+
+let test_isIn myint num () =
+  Alcotest.(check bool) "same result" true (Gardener.isIn myint num)
+
+let test_isNotIn myint num () =
+  Alcotest.(check bool) "same result" false (Gardener.isIn myint num)
+
+let () =
+  let open Alcotest in
+  run "Utils"
+    [
+      ( "intervals",
+        [
+          test_case "is in" `Quick (test_isIn { low = 2; up = 3 } 3);
+          test_case "is in" `Quick (test_isIn { low = 1; up = 3 } 1);
+          test_case "is not in" `Quick (test_isNotIn { low = 1; up = 3 } 4);
+        ] );
+    ]
