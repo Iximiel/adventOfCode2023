@@ -31,3 +31,7 @@ Day 4 task 1 was far mor easier than day3, no need to explain, the task descript
 Task2 was complex until i read how to increment the head of a list , then it got worse until I stopped using the calculated winning of task 1 as match...
 
 I did also a beautiful refactor of task 1
+
+## Day 5
+
+Day 5 looks like is a nested decodification sequence, I think the only long thing will be preparing the input
