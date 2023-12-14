@@ -36,13 +36,18 @@ let example =
   ]
 
 let _ = example
+
 (* let interval = Alcotest.testable Gardener.ppint Gardener.equalint *)
+let fromTo = Alcotest.testable Gardener.ppft Gardener.equalft
 
 let test_isIn myint num () =
   Alcotest.(check bool) "same result" true (Gardener.isIn myint num)
 
 let test_isNotIn myint num () =
   Alcotest.(check bool) "same result" false (Gardener.isIn myint num)
+
+let test_parseFT s res () =
+  Alcotest.(check fromTo) "same result" res (Gardener.strToFromTo s)
 
 let () =
   let open Alcotest in
@@ -53,5 +58,11 @@ let () =
           test_case "is in" `Quick (test_isIn { low = 2; up = 3 } 3);
           test_case "is in" `Quick (test_isIn { low = 1; up = 3 } 1);
           test_case "is not in" `Quick (test_isNotIn { low = 1; up = 3 } 4);
+        ] );
+      ( "FromTp",
+        [
+          test_case "parser" `Quick
+            (test_parseFT "80 30 5"
+               { source = { low = 80; up = 85 }; dest = { low = 30; up = 35 } });
         ] );
     ]
