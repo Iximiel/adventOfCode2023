@@ -20,7 +20,7 @@
  (public_name aoc23_04)
  (name day04)
  (modules day04)
- (libraries scratcher))
+ (libraries scratcher utilities))
 
 ; (executable
 ;  (public_name aoc23_05)

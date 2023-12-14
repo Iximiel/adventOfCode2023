@@ -22,5 +22,11 @@
  (modules scratcher)
  (libraries fmt))
 
-; (library
-;  (name aoc23_05))
+(library
+ (name gardener)
+ (modules gardener)
+ (libraries fmt))
+
+(library
+ (name utilities)
+ (modules utilities))
