@@ -54,5 +54,9 @@ I think I bruteforced it, I started to be elegant and then i recovered to someth
 
 Task 2 was easier than expected, wow, this means that I didn't see the most obvious solution for task 1 ?
 
+## Day 7
+
+Ok, I need to set order, for the cards and then recognise patterns
+
 
 
