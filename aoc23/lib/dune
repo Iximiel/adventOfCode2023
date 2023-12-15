@@ -28,5 +28,10 @@
  (libraries fmt))
 
 (library
+ (name raceboat)
+ (modules raceboat)
+ (libraries fmt))
+
+(library
  (name utilities)
  (modules utilities))

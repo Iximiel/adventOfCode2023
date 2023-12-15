@@ -27,3 +27,9 @@
  (name day05)
  (modules day05)
  (libraries gardener utilities))
+
+(executable
+ (public_name aoc23_06)
+ (name day06)
+ (modules day06)
+ (libraries raceboat))

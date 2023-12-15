@@ -11,6 +11,8 @@ While doing day3 I'm starting to think that I am using a bit too much regex.
 
 At day 5 i decide to move everithing in a single project, this may be a bad idea, fut I think I can reutilize some code with no repetition
 
+At some point I decide to write a statement before task1, after task1 and after task2 , and sometime before task2, making this a sort of diary, enjoy
+
 ## Day 1
 My solution was to regex all the problems away.
 Ocaml makes finding regex quite easy (apart thata strange  way or declaring raw strings`{||}`)
@@ -43,4 +45,10 @@ It took more than I tough for task1
 for task2 the organizer wants me to learn tail recursion to avoid a stack overflow (the error, not the site)
 
 It's the least efficient solution, but hey is there :smile: let's gooo
+
+## Day 6
+
+Toh! A minimization (maximization) problem, I love minimization problem, I'll have to learn minimization problems on Ocaml...
+
+I think I bruteforced it, I started to be elegant and then i recovered to something like this...
 
