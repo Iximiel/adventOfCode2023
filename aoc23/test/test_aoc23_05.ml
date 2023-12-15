@@ -67,6 +67,12 @@ let test_game () =
     (Gardener.getLocations (Gardener.reader example)
     |> List.sort ( - ) |> List.hd)
 
+let test_game2 () =
+  Alcotest.(check int)
+    "same result" 46
+    (Gardener.getLocations (Gardener.correctReader example)
+    |> List.sort ( - ) |> List.hd)
+
 let () =
   let open Alcotest in
   run "Utils"
@@ -110,6 +116,9 @@ let () =
             (test_convert [ "50 98 2"; "52 50 48" ] 79 81);
         ] );
       ( "reader",
-        [ test_case "reader" `Quick ttt; test_case "reader" `Quick test_game ]
-      );
+        [
+          test_case "reader" `Quick ttt;
+          test_case "task1" `Quick test_game;
+          test_case "task2" `Quick test_game2;
+        ] );
     ]

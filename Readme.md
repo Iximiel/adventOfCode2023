@@ -39,3 +39,8 @@ I did also a beautiful refactor of task 1
 
 Day 5 looks like is a nested decodification sequence, I think the only long thing will be preparing the input
 It took more than I tough for task1
+
+for task2 the organizer wants me to learn tail recursion to avoid a stack overflow (the error, not the site)
+
+It's the least efficient solution, but hey is there :smile: let's gooo
+

@@ -5,10 +5,9 @@ let () =
   print_string "task 1: ";
   let myMap = Gardener.reader lines in
   Gardener.getLocations myMap |> List.sort ( - ) |> List.hd |> print_int;
+  print_endline "";
+  print_string "task 2: ";
+  let converter = Gardener.createconverter myMap in
+  Gardener.getLocationsBetter converter myMap.seeds
+  |> List.sort ( - ) |> List.hd |> print_int;
   print_endline ""
-(* print_string "task 2: ";
-   doSum
-     (List.map Scratcher.getObjAndGame lines
-     |> Scratcher.calculateMatches |> Scratcher.elaborateWinning)
-   |> print_int;
-   print_endline "" *)

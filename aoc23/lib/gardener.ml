@@ -64,7 +64,7 @@ type completeMap = {
   h2lo : fromTo list;
 }
 
-let reader ls =
+let abstractReader seedF ls =
   let rec aux l r =
     match l with
     | [] -> [ List.rev r ]
@@ -72,13 +72,9 @@ let reader ls =
     | any :: ll -> aux ll (any :: r)
   in
   let mm = aux (List.tl ls) [] in
-  let notEmpty str = String.equal String.empty str |> not in
-  let tmp =
-    String.split_on_char ' ' (List.hd ls)
-    |> List.filter notEmpty |> List.tl |> List.map int_of_string
-  in
+
   {
-    seeds = tmp;
+    seeds = seedF;
     (*skips the first blank line*)
     se2so = getMap @@ List.tl @@ List.nth mm 1;
     so2f = getMap @@ List.tl @@ List.nth mm 2;
@@ -89,6 +85,29 @@ let reader ls =
     h2lo = getMap @@ List.tl @@ List.nth mm 7;
   }
 
+let reader ls =
+  let notEmpty str = String.equal String.empty str |> not in
+  let tmp =
+    String.split_on_char ' ' (List.hd ls)
+    |> List.filter notEmpty |> List.tl |> List.map int_of_string
+  in
+  abstractReader tmp ls
+
+let correctReader ls =
+  let notEmpty str = String.equal String.empty str |> not in
+  let rec makeR s r = if r == 0 then [] else s :: makeR (s + 1) (r - 1) in
+  let tmp =
+    String.split_on_char ' ' (List.hd ls)
+    |> List.filter notEmpty |> List.tl |> List.map int_of_string
+  in
+  let rec aux myl =
+    match myl with
+    | [] -> []
+    | _ :: [] -> []
+    | s :: r :: l -> List.concat [ makeR s r; aux l ]
+  in
+  abstractReader (aux tmp) ls
+
 let getLocations myMap =
   let translator i =
     convert myMap.se2so i |> convert myMap.so2f |> convert myMap.f2w
@@ -96,3 +115,20 @@ let getLocations myMap =
     |> convert myMap.h2lo
   in
   List.map translator myMap.seeds
+
+let createconverter myMap i =
+  convert myMap.se2so i |> convert myMap.so2f |> convert myMap.f2w
+  |> convert myMap.w2li |> convert myMap.li2t |> convert myMap.t2h
+  |> convert myMap.h2lo
+
+let getLocationsBetter converter seeds =
+  let rec findLower value inc minimum =
+    if inc == 0 then minimum
+    else findLower (value + 1) (inc - 1) (min minimum (converter value))
+  in
+  let rec aux = function
+    | [] -> []
+    | _ :: [] -> []
+    | min :: rang :: l -> findLower min rang (converter min) :: aux l
+  in
+  aux seeds
