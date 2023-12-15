@@ -62,9 +62,10 @@ let ttt () =
     (Gardener.reader example).li2t
 
 let test_game () =
-  Alcotest.(check @@ list int)
-    "same result" [ 35 ]
-    (Gardener.getLocations (Gardener.reader example) |> List.sort ( - ))
+  Alcotest.(check int)
+    "same result" 35
+    (Gardener.getLocations (Gardener.reader example)
+    |> List.sort ( - ) |> List.hd)
 
 let () =
   let open Alcotest in

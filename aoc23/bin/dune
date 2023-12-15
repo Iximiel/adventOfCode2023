@@ -22,8 +22,8 @@
  (modules day04)
  (libraries scratcher utilities))
 
-; (executable
-;  (public_name aoc23_05)
-;  (name day05)
-;  (modules day05)
-;  (libraries aoc23_05))
+(executable
+ (public_name aoc23_05)
+ (name day05)
+ (modules day05)
+ (libraries gardener utilities))

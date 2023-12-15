@@ -38,3 +38,4 @@ I did also a beautiful refactor of task 1
 ## Day 5
 
 Day 5 looks like is a nested decodification sequence, I think the only long thing will be preparing the input
+It took more than I tough for task1
