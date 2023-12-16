@@ -58,5 +58,5 @@ Task 2 was easier than expected, wow, this means that I didn't see the most obvi
 
 Ok, I need to set order, for the cards and then recognise patterns
 
-
-
+I must have put a bug in the test, because the aswer is wrong...
+Ok, I can't lookuptable... task 1 done, I should concentrate tests on edge cases next times

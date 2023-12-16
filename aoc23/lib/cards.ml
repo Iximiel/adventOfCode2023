@@ -19,6 +19,8 @@ let chars_of_string s =
     if i == String.length s - 1 then [ st.[i] ] else st.[i] :: aux st (i + 1)
   in
   aux s 0
+(* let's be explicit: wha have only 5 cards*)
+(* [ s.[0]; s.[1]; s.[2]; s.[3]; s.[4] ] *)
 
 let reorderHand h =
   let cmpCardsReorder a b = card b - card a in
@@ -35,18 +37,28 @@ let numEquals s =
   in
   aux (chars_of_string s) s.[0] 0
 
+let five = 25
+let four = 16
+let full = 10
+let three = 6
+let double = 4
+let couple = 2
+let high = 0
+
 let handStrength h =
   let hand = reorderHand h in
-  let ne = numEquals hand |> List.sort ( - ) in
+  let ne = numEquals hand in
   (*look up table -sorta-*)
   match ne with
-  | [ 5 ] -> 25
-  | [ 4 ] -> 20
-  | [ 3; 2 ] -> 17
-  | [ 3 ] -> 15
-  | [ 2; 2 ] -> 12
-  | [ 2 ] -> 10
-  | [] -> 0
+  | [ 5 ] -> five
+  | [ 4 ] -> four
+  | [ 3; 2 ] -> full
+  (* Reoerdering did not work, so I explicited the case *)
+  | [ 2; 3 ] -> full
+  | [ 3 ] -> three
+  | [ 2; 2 ] -> double
+  | [ 2 ] -> couple
+  | [] -> high
   | _ -> 0
 
 let orderCompare h1 h2 =
@@ -74,6 +86,8 @@ let orderCompareIII h1 h2 =
         if r == 0 then aux l1 l2 else r
     | _ -> 0
   in
+  (* ac C++ programmer I'm addung an UB here *proud of myself* : i do NOT expect any case to be completely equal *)
+  (* if aux l1 l2 > 0 then 1 else -1 *)
   aux l1 l2
 
 let powerCompare h1 h2 =
@@ -90,16 +104,19 @@ let game ls =
     | l :: ls ->
         let t = String.split_on_char ' ' l in
         (* if String.length (List.nth t 0) != 5 then *)
-        (* raise (CardError ("Error in reading hand" ^ List.nth t 0)); *)
+        (* raise (CardError ("Error in reading hand: " ^ List.nth t 0)); *)
+        (* if List.length t != 2 then
+           raise (CardError ("Error in reading line: " ^ l)); *)
         (List.nth t 0, int_of_string @@ List.nth t 1) :: aux ls
     | [] -> []
   in
   let cards_bets = aux ls |> List.sort cbCompare in
-  let rec multiplypower cbs i pow =
+  let rec multiplypower cbs (i : int64) (pow : int64) =
     match cbs with
     | cb :: cbsl ->
         (* Printf.printf "%s %i %i\n" (fst cb) i (snd cb); *)
-        multiplypower cbsl (i + 1) (pow + (i * snd cb))
+        multiplypower cbsl (Int64.succ i)
+          (Int64.add pow (Int64.mul i @@ Int64.of_int (snd cb)))
     | [] -> pow
   in
-  multiplypower cards_bets 1 0
+  multiplypower cards_bets 1L 0L
