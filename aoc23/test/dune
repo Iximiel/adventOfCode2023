@@ -27,3 +27,8 @@
  (name test_aoc23_06)
  (modules test_aoc23_06)
  (libraries alcotest raceboat))
+
+(test
+ (name test_aoc23_07)
+ (modules test_aoc23_07)
+ (libraries alcotest cards))
