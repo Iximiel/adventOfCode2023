@@ -60,3 +60,5 @@ Ok, I need to set order, for the cards and then recognise patterns
 
 I must have put a bug in the test, because the aswer is wrong...
 Ok, I can't lookuptable... task 1 done, I should concentrate tests on edge cases next times
+
+I lookuptable'd task2, brute frce solutions are best solutions xD (until someone expands the pool, but they make you feel clever)

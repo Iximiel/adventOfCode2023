@@ -14,8 +14,14 @@ let test_orderhands lh res () =
 let test_handStrenght s res () =
   Alcotest.(check int) "same result" res (Cards.handStrength s)
 
+let test_handStrenghtjk s res () =
+  Alcotest.(check int) "same result" res (Cards.handStrengthjk s)
+
 let test_game ls res () =
   Alcotest.(check int64) "same result" res (Cards.game ls)
+
+let test_gamejk ls res () =
+  Alcotest.(check int64) "same result" res (Cards.gamejk ls)
 
 let test_powercompare a b res () =
   Alcotest.(check int) "same result" res (Cards.powerCompare a b)
@@ -84,5 +90,29 @@ let () =
                  "22222";
                ]);
           test_case "check game" `Quick (test_game example 6440L);
+        ] );
+      ( "test_utilsWithJokers",
+        [
+          test_case "check handStrenght 3+2 jk" `Quick
+            (test_handStrenghtjk "333JJ" Cards.five);
+          test_case "check handStrenght 2+3 jk" `Quick
+            (test_handStrenghtjk "JJJ33" Cards.five);
+          test_case "check handStrenght 4+1 jk" `Quick
+            (test_handStrenghtjk "3333J" Cards.five);
+          test_case "check handStrenght 3+1 jk" `Quick
+            (test_handStrenghtjk "2J333" Cards.four);
+          test_case "check handStrenght 2+2 jk" `Quick
+            (test_handStrenghtjk "332JJ" Cards.four);
+          test_case "check handStrenght [2;2]+1 jk" `Quick
+            (test_handStrenghtjk "3322J" Cards.full);
+          test_case "check handStrenght 2+1 jk" `Quick
+            (test_handStrenghtjk "J332Q" Cards.three);
+          test_case "check handStrenght 3 jk" `Quick
+            (test_handStrenghtjk "JJJ2A" Cards.four);
+          test_case "check handStrenght 2 jk" `Quick
+            (test_handStrenghtjk "JJ32A" Cards.three);
+          test_case "check handStrenght 1 jk" `Quick
+            (test_handStrenghtjk "JQ32A" Cards.couple);
+          test_case "check game2" `Quick (test_gamejk example 5905L);
         ] );
     ]
