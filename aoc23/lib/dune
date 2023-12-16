@@ -42,4 +42,5 @@
 
 (library
  (name themap)
- (modules themap))
+ (modules themap)
+ (libraries utilities str))

@@ -66,3 +66,6 @@ I lookuptable'd task2, brute frce solutions are best solutions xD (until someone
 ## Day 9
 
 This looks like a tree to me (or a complexer graph?)
+
+I think i learned how to make the map?
+I did not commit the win of task1, this day looks easier (or I've been too imperative?)
