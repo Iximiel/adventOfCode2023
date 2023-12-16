@@ -69,3 +69,12 @@ This looks like a tree to me (or a complexer graph?)
 
 I think i learned how to make the map?
 I did not commit the win of task1, this day looks easier (or I've been too imperative?)
+
+Bruteforcing task2 must not be a good idea, I cheated a bit, on reddit I read that someone has tried the mcm, this may work if the paths loop without overlapping, meaning that each start has ONLY one end.
+I'll try to resolve it by assuming, instead of verifyin, because I am lazy tha the paths do not overlap,
+
+I did a wrong assumption on the smallest divisor for the mcm, and i ended up wrogning a bit.
+
+In the end while i was woking on the mcm the bruteforece is still working... well that's a lesson
+
+# Day 10
