@@ -42,3 +42,8 @@
  (name test_aoc23_08)
  (modules test_aoc23_08)
  (libraries alcotest themap))
+
+(test
+ (name test_aoc23_09)
+ (modules test_aoc23_09)
+ (libraries alcotest predictor))

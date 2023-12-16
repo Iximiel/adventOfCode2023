@@ -44,3 +44,7 @@
  (name themap)
  (modules themap)
  (libraries utilities str))
+
+(library
+ (name predictor)
+ (modules predictor))

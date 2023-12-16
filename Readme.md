@@ -78,3 +78,7 @@ I did a wrong assumption on the smallest divisor for the mcm, and i ended up wro
 In the end while i was woking on the mcm the bruteforece is still working... well that's a lesson
 
 # Day 9
+
+Looks like task 1 is fully explained by their description, it may be so that task 2 will be too difficult?
+
+Let's play with triangles, hoping this do not become a fibonacci-like thing in task2...
