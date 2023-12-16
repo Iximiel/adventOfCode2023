@@ -63,7 +63,7 @@ Ok, I can't lookuptable... task 1 done, I should concentrate tests on edge cases
 
 I lookuptable'd task2, brute frce solutions are best solutions xD (until someone expands the pool, but they make you feel clever)
 
-## Day 9
+## Day 8
 
 This looks like a tree to me (or a complexer graph?)
 
@@ -77,4 +77,4 @@ I did a wrong assumption on the smallest divisor for the mcm, and i ended up wro
 
 In the end while i was woking on the mcm the bruteforece is still working... well that's a lesson
 
-# Day 10
+# Day 9
