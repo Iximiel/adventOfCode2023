@@ -39,3 +39,9 @@
  (name day07)
  (modules day07)
  (libraries cards utilities))
+
+(executable
+ (public_name aoc23_08)
+ (name day08)
+ (modules day08)
+ (libraries themap))

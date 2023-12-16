@@ -64,6 +64,5 @@ Ok, I can't lookuptable... task 1 done, I should concentrate tests on edge cases
 I lookuptable'd task2, brute frce solutions are best solutions xD (until someone expands the pool, but they make you feel clever)
 
 ## Day 9
+
 This looks like a tree to me (or a complexer graph?)
-
-

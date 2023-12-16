@@ -1,4 +1,9 @@
 (test
+ (name test_utilities)
+ (modules test_utilities)
+ (libraries alcotest utilities))
+
+(test
  (name test_aoc23_01)
  (modules test_aoc23_01)
  (libraries alcotest trebuchet))
@@ -32,3 +37,8 @@
  (name test_aoc23_07)
  (modules test_aoc23_07)
  (libraries alcotest cards))
+
+(test
+ (name test_aoc23_08)
+ (modules test_aoc23_08)
+ (libraries alcotest themap))

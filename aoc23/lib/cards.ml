@@ -18,23 +18,10 @@ let cmp fn a b = fn a - fn b
 let cmpCards = cmp card
 let cmpCardsjk = cmp cardjk
 
-(*stolen from https://stackoverflow.com/a/29957532 *)
-let string_of_chars chars =
-  let buf = Buffer.create 16 in
-  List.iter (Buffer.add_char buf) chars;
-  Buffer.contents buf
-
-let chars_of_string s =
-  let rec aux st i =
-    if i == String.length s - 1 then [ st.[i] ] else st.[i] :: aux st (i + 1)
-  in
-  aux s 0
-(* let's be explicit: wha have only 5 cards*)
-(* [ s.[0]; s.[1]; s.[2]; s.[3]; s.[4] ] *)
-
 let reorderHandbase crd h =
   let cmpCardsReorder a b = crd b - crd a in
-  chars_of_string h |> List.sort cmpCardsReorder |> string_of_chars
+  Utilities.chars_of_string h
+  |> List.sort cmpCardsReorder |> Utilities.string_of_chars
 
 let reorderHand = reorderHandbase card
 let reorderHandjk = reorderHandbase cardjk
@@ -48,7 +35,7 @@ let numEquals s =
         else if ne > 1 then ne :: aux str nc 1
         else aux str nc 1
   in
-  aux (chars_of_string s) s.[0] 0
+  aux (Utilities.chars_of_string s) s.[0] 0
 
 let five = 25
 let four = 16
@@ -74,7 +61,8 @@ let handStrength h =
   | [] -> high
   | _ -> 0
 
-let countJK h = List.filter (Char.equal 'J') @@ chars_of_string h |> List.length
+let countJK h =
+  List.filter (Char.equal 'J') @@ Utilities.chars_of_string h |> List.length
 
 let handStrengthjk h =
   let jk = countJK h in
@@ -95,7 +83,7 @@ let handStrengthjk h =
     | _ -> 0
 
 let orderCompareBase cmp h1 h2 =
-  let l1 = chars_of_string h1 and l2 = chars_of_string h2 in
+  let l1 = Utilities.chars_of_string h1 and l2 = Utilities.chars_of_string h2 in
   let rec aux a b =
     match (a, b) with
     | x :: l1, y :: l2 ->

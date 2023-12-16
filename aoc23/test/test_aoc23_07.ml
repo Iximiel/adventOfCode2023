@@ -1,8 +1,5 @@
 let example = [ "32T3K 765"; "T55J5 684"; "KK677 28"; "KTJJT 220"; "QQQJA 483" ]
 
-let test_tolchars s res () =
-  Alcotest.(check @@ list char) "same result" res (Cards.chars_of_string s)
-
 let test_reorderhand s res () =
   Alcotest.(check string) "same result" res (Cards.reorderHand s)
 
@@ -28,14 +25,10 @@ let test_powercompare a b res () =
 
 let () =
   let open Alcotest in
-  run "Utils"
+  run "Cards"
     [
       ( "test_tolchars",
         [
-          test_case "check to charL" `Quick
-            (test_tolchars "test1" [ 't'; 'e'; 's'; 't'; '1' ]);
-          test_case "check charL" `Quick
-            (test_tolchars "ciao!" [ 'c'; 'i'; 'a'; 'o'; '!' ]);
           test_case "check reorder" `Quick (test_reorderhand "9K33A" "AK933");
           test_case "check reorder" `Quick (test_reorderhand "5432A" "A5432");
           test_case "check reorder" `Quick (test_reorderhand "32323" "33322");

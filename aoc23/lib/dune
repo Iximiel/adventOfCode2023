@@ -1,4 +1,8 @@
 (library
+ (name utilities)
+ (modules utilities))
+
+(library
  (name trebuchet)
  (modules trebuchet)
  (libraries str))
@@ -33,8 +37,9 @@
 
 (library
  (name cards)
- (modules cards))
+ (modules cards)
+ (libraries utilities))
 
 (library
- (name utilities)
- (modules utilities))
+ (name themap)
+ (modules themap))
