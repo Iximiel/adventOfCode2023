@@ -130,3 +130,9 @@ let makemcm divisorList =
         pow (fst pa) (snd pa) * forgemcm ls
   in
   DivMap.mapi (getMaxPow others) driver |> DivMap.to_list |> forgemcm
+
+let accumulate op init =
+  let rec aux = function [] -> init | i :: l -> op i (aux l) in
+  aux
+
+let accumulateSum = accumulate ( + ) 0

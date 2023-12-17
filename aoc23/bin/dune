@@ -50,4 +50,4 @@
  (public_name aoc23_09)
  (name day09)
  (modules day09)
- (libraries predictor))
+ (libraries predictor utilities))

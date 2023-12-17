@@ -82,3 +82,6 @@ In the end while i was woking on the mcm the bruteforece is still working... wel
 Looks like task 1 is fully explained by their description, it may be so that task 2 will be too difficult?
 
 Let's play with triangles, hoping this do not become a fibonacci-like thing in task2...
+
+Task 1 was simple, but i feel I've been walk-trough'd by the puzzle writers....
+
