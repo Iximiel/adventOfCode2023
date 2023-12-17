@@ -99,4 +99,8 @@ I just removed a List.rev from the toolchain and inverted a number...
 
 Double digit, finally
 
-I never touched anything similar in my previos work (or maybe that time on counting clusters), but now is time to sleep
+I never touched anything similar in my previos work (or maybe that time on counting clusters), but now is time to sleep.
+To me, looks like a sort of pathfinding algorithm, I might have to read someting, fortunately there ar no three or four way junctions.
+So I'll have to make only two walkers
+
+I'm working with the hope that the goodwill of the puzzlemaker did not create tubes that are going outside
