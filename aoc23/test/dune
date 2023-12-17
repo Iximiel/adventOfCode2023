@@ -47,3 +47,8 @@
  (name test_aoc23_09)
  (modules test_aoc23_09)
  (libraries alcotest predictor))
+
+(test
+ (name test_aoc23_10)
+ (modules test_aoc23_10)
+ (libraries alcotest pipeline))

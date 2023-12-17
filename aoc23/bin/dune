@@ -51,3 +51,9 @@
  (name day09)
  (modules day09)
  (libraries predictor utilities))
+
+(executable
+ (public_name aoc23_10)
+ (name day10)
+ (modules day10)
+ (libraries pipeline))

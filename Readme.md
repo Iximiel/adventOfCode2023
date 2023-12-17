@@ -94,3 +94,9 @@ I did it, in few minutes...
 Looks like this puzzle has written FUNCTIONAL on it... :smile:, actually is all about string manipulations
 
 I just removed a List.rev from the toolchain and inverted a number...
+
+## Day10
+
+Double digit, finally
+
+I never touched anything similar in my previos work (or maybe that time on counting clusters), but now is time to sleep

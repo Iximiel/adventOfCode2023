@@ -48,3 +48,7 @@
 (library
  (name predictor)
  (modules predictor))
+
+(library
+ (name pipeline)
+ (modules pipeline))
