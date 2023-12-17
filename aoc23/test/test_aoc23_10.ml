@@ -15,6 +15,31 @@ let example1 = [ "..F7."; ".FJ|."; "SJ.L7"; "|F--J"; "LJ..." ]
 .....
 *)
 let examplesimple = [ "....."; ".S-7."; ".|.|."; ".L-J."; "....." ]
+
+(*
+...........
+.S-------7.
+.|F-----7|.
+.||.....||.
+.||.....||.
+.|L-7.F-J|.
+.|..|.|..|.
+.L--J.L--J.
+...........
+*)
+let exampleAreaSimple =
+  [
+    "...........";
+    ".S-------7.";
+    ".|F-----7|.";
+    ".||.....||.";
+    ".||.....||.";
+    ".|L-7.F-J|.";
+    ".|..|.|..|.";
+    ".L--J.L--J.";
+    "...........";
+  ]
+
 let walker = Alcotest.testable Pipeline.Walker.pp Pipeline.Walker.equal
 
 let test_FindS map res () =

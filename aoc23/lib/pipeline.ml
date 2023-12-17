@@ -69,6 +69,10 @@ module Walker = struct
     let x, y = xy in
     { d; x; y }
 
+  let weight maxwidth w = w.x + (w.y * maxwidth)
+  let gety y w = y == w.y
+  let getx x w = x == w.x
+
   let advance walker pipe =
     match pipebend walker.d pipe with
     | None -> None
@@ -135,7 +139,35 @@ let walkPipes pipemap walkers =
     let toret = w :: ret in
     if getPipe pipemap (w.x, w.y) == 'S' then toret else aux (adv w) toret
   in
+  (*this returns the perimeter :)*)
   aux (List.nth walkers 0) []
 
 let walkForTask1 pipemap =
   (findInitialPoints pipemap |> walkPipes pipemap |> List.length) / 2
+
+let rec makeAlist elementMaker maxL l =
+  if l < maxL then elementMaker l :: makeAlist elementMaker maxL (l + 1) else []
+
+let mapOfPipes map path =
+  let height = List.length map and width = String.length (List.nth map 0) in
+  let compare w1 w2 =
+    let sortWeight = Walker.weight width in
+    sortWeight w1 - sortWeight w2
+  in
+  let sortedPath = List.sort compare path in
+  let rec aux h =
+    if h < height then
+      let hpart = List.filter (Walker.gety h) sortedPath in
+      let rec makeRow w =
+        if w < width then
+          (if List.exists (Walker.getx w) hpart then 'x' else '.')
+          :: makeRow (w + 1)
+        else []
+      in
+      (makeRow 0 |> Utilities.string_of_chars) :: aux (h + 1)
+    else []
+  in
+  aux 0
+(* let makeRow =
+   let maker w =(if List.exists (Walker.getx w) hpart then 'x' else '.') in
+   makeAlist maker width *)

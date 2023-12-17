@@ -52,4 +52,4 @@
 (library
  (name pipeline)
  (modules pipeline)
- (libraries fmt))
+ (libraries fmt utilities))
