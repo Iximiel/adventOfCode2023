@@ -10,6 +10,11 @@ let test_predictSub ls res () =
     "same res" res
     (Predictor.getAllBySub ls |> Predictor.predictBySub)
 
+let test_predictBack ls res () =
+  Alcotest.(check int)
+    "same res" res
+    (Predictor.getAllBySub ls |> Predictor.predictBack)
+
 let () =
   let open Alcotest in
   run "TheMap"
@@ -33,7 +38,13 @@ let () =
             (test_predictSub [ 0; 3; 6; 9; 12; 15 ] 18);
           test_case "example2" `Quick
             (test_predictSub [ 1; 3; 6; 10; 15; 21 ] 28);
-          test_case "example2" `Quick
+          test_case "example3" `Quick
             (test_predictSub [ 10; 13; 16; 21; 30; 45 ] 68);
+          test_case "example1 back" `Quick
+            (test_predictBack [ 0; 3; 6; 9; 12; 15 ] (-3));
+          test_case "example2 back" `Quick
+            (test_predictBack [ 1; 3; 6; 10; 15; 21 ] 0);
+          test_case "example3 back" `Quick
+            (test_predictBack [ 10; 13; 16; 21; 30; 45 ] 5);
         ] );
     ]

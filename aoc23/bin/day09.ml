@@ -18,3 +18,12 @@ let sumPrediction =
   aux linesParsed
 
 let () = sumPrediction |> Printf.printf "Task1: %i\n"
+
+let sumPrediction =
+  let rec aux = function
+    | [] -> 0
+    | l :: ot -> (Predictor.getAllBySub l |> Predictor.predictBack) + aux ot
+  in
+  aux linesParsed
+
+let () = sumPrediction |> Printf.printf "Task2: %i\n"

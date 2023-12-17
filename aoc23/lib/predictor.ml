@@ -23,3 +23,15 @@ let predictor op myDecodedList =
 let nextBySub = nextSequence ( - )
 let getAllBySub = getAllSeqs ( - )
 let predictBySub = predictor ( + )
+
+let predictorInv op myDecodedList =
+  let fromLowerUp = List.rev myDecodedList in
+  let setNext res num = op res num in
+  let rec navigate list res =
+    match list with
+    | [] -> res
+    | l :: ls -> navigate ls @@ setNext (l |> List.hd) res
+  in
+  navigate fromLowerUp 0
+
+let predictBack = predictorInv ( - )
