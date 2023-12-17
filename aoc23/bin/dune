@@ -56,4 +56,4 @@
  (public_name aoc23_10)
  (name day10)
  (modules day10)
- (libraries pipeline))
+ (libraries pipeline utilities))

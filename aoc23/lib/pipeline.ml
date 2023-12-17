@@ -11,22 +11,12 @@
      S is the starting position of the animal; there is a pipe on this tile, but your sketch doesn't show what shape the pipe has.
 *)
 type myDirection = Nord | South | East | West
-type walker = { d : myDirection; x : int; y : int }
-
-let equaldir (a : walker) (b : walker) = a.d == b.d && a.x == b.x && a.y = b.y
 
 let string_of_mydirection = function
   | Nord -> "Nord"
   | South -> "South"
   | East -> "East"
   | West -> "West"
-
-let ppdir ppf { d; x; y } =
-  Fmt.pf ppf "%s (%i,%i)" (string_of_mydirection d) x y
-
-let makewalker d xy =
-  let x, y = xy in
-  { d; x; y }
 
 (* Direction is from me looking at the map, my brain does not process 'rc cars' controls (so that in Factorio I walk...) *)
 let pipebend direction tube =
@@ -64,23 +54,33 @@ let pipeCompatibility direction tube =
 (* .  *)
 (* S  *)
 
-let advance d xy =
-  let x, y = xy in
-  match d with
-  (*the v axis is inverted*)
-  | Nord -> (x, y - 1)
-  | South -> (x, y + 1)
-  | East -> (x + 1, y)
-  | West -> (x - 1, y)
+module Walker = struct
+  type walker = { d : myDirection; x : int; y : int }
 
-let advanceWalker walker =
-  let x, y = (walker.x, walker.y) in
-  match walker.d with
-  (*the v axis is inverted*)
-  | Nord -> { d = walker.d; x; y = y - 1 }
-  | South -> { d = walker.d; x; y = y + 1 }
-  | East -> { d = walker.d; x = x + 1; y }
-  | West -> { d = walker.d; x = x - 1; y }
+  let equal (a : walker) (b : walker) = a.d == b.d && a.x == b.x && a.y = b.y
+  let equalPlace (a : walker) (b : walker) = a.x == b.x && a.y = b.y
+  let pp ppf { d; x; y } = Fmt.pf ppf "%s (%i,%i)" (string_of_mydirection d) x y
+
+  let string_of_walker { d; x; y } =
+    string_of_mydirection d ^ " (" ^ string_of_int x ^ ", " ^ string_of_int y
+    ^ ")"
+
+  let create d xy =
+    let x, y = xy in
+    { d; x; y }
+
+  let advance walker pipe =
+    match pipebend walker.d pipe with
+    | None -> None
+    | Some newd -> (
+        let x, y = (walker.x, walker.y) in
+        match newd with
+        (*the v axis is inverted*)
+        | Nord -> Some { d = newd; x; y = y - 1 }
+        | South -> Some { d = newd; x; y = y + 1 }
+        | East -> Some { d = newd; x = x + 1; y }
+        | West -> Some { d = newd; x = x - 1; y })
+end
 
 let findStart listOLines =
   let nth = List.nth listOLines and length = List.length listOLines in
@@ -100,12 +100,19 @@ let findInitialPoints listOLines =
   let xy = findStart listOLines and pipe = getPipe listOLines in
   let x, y = xy
   and height = List.length listOLines - 1
-  and width = String.length (List.nth listOLines 0) - 1
-  and adv d = advance d xy in
+  and width = String.length (List.nth listOLines 0) - 1 in
+  let adv d =
+    match d with
+    (*the v axis is inverted*)
+    | Nord -> (x, y - 1)
+    | South -> (x, y + 1)
+    | East -> (x + 1, y)
+    | West -> (x - 1, y)
+  in
   let rec aux =
     let check d l =
       let myxy = adv d in
-      if pipeCompatibility d (pipe myxy) then makewalker d myxy :: aux l
+      if pipeCompatibility d (pipe myxy) then Walker.create d myxy :: aux l
       else aux l
     in
     function
@@ -116,3 +123,28 @@ let findInitialPoints listOLines =
     | [] -> []
   in
   aux [ Nord; South; East; West ]
+
+let walkPipes pipemap walkers =
+  if List.length walkers != 2 then
+    raise (Invalid_argument "walkPipes accepts only 2 input walkers")
+  else
+    let open Walker in
+    let adv w =
+      match Walker.advance w @@ getPipe pipemap (w.x, w.y) with
+      | None -> raise Not_found
+      | Some w -> w
+    and w0 = ref @@ List.nth walkers 0
+    and w1 = ref @@ List.nth walkers 1
+    and path = ref 1 in
+
+    while not (equalPlace !w0 !w1) do
+      (* print_endline "w0"; *)
+      (* print_endline @@ string_of_walker !w0; *)
+      w0 := adv !w0;
+      (* print_endline @@ string_of_walker !w0; *)
+      w1 := adv !w1;
+      path := succ !path
+    done;
+    !path
+
+let walkForTask1 pipemap = findInitialPoints pipemap |> walkPipes pipemap
