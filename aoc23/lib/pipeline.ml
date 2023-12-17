@@ -125,26 +125,17 @@ let findInitialPoints listOLines =
   aux [ Nord; South; East; West ]
 
 let walkPipes pipemap walkers =
-  if List.length walkers != 2 then
-    raise (Invalid_argument "walkPipes accepts only 2 input walkers")
-  else
-    let open Walker in
-    let adv w =
-      match Walker.advance w @@ getPipe pipemap (w.x, w.y) with
-      | None -> raise Not_found
-      | Some w -> w
-    and w0 = ref @@ List.nth walkers 0
-    and w1 = ref @@ List.nth walkers 1
-    and path = ref 1 in
+  let open Walker in
+  let adv w =
+    match Walker.advance w @@ getPipe pipemap (w.x, w.y) with
+    | None -> raise Not_found
+    | Some w -> w
+  in
+  let rec aux w ret =
+    let toret = w :: ret in
+    if getPipe pipemap (w.x, w.y) == 'S' then toret else aux (adv w) toret
+  in
+  aux (List.nth walkers 0) []
 
-    while not (equalPlace !w0 !w1) do
-      (* print_endline "w0"; *)
-      (* print_endline @@ string_of_walker !w0; *)
-      w0 := adv !w0;
-      (* print_endline @@ string_of_walker !w0; *)
-      w1 := adv !w1;
-      path := succ !path
-    done;
-    !path
-
-let walkForTask1 pipemap = findInitialPoints pipemap |> walkPipes pipemap
+let walkForTask1 pipemap =
+  (findInitialPoints pipemap |> walkPipes pipemap |> List.length) / 2

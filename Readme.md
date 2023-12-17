@@ -106,3 +106,5 @@ So I'll have to make only two walkers
 I'm working with the hope that the goodwill of the puzzlemaker did not create tubes that are going outside
 
 Task1 done, simply making 2 walker go intoeach other did the trick, now i have to calculate THE AREA
+
+(but before a little refaftor to make the thing more functional)
