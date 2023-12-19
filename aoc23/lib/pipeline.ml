@@ -60,6 +60,8 @@ module Walker = struct
   let equal (a : walker) (b : walker) = a.d == b.d && a.x == b.x && a.y = b.y
   let equalPlace (a : walker) (b : walker) = a.x == b.x && a.y = b.y
   let pp ppf { d; x; y } = Fmt.pf ppf "%s (%i,%i)" (string_of_mydirection d) x y
+  let compareByY w1 w2 = w2.y - w1.y
+  let compareByX w1 w2 = w2.x - w1.x
 
   let string_of_walker { d; x; y } =
     string_of_mydirection d ^ " (" ^ string_of_int x ^ ", " ^ string_of_int y
@@ -70,8 +72,14 @@ module Walker = struct
     { d; x; y }
 
   let weight maxwidth w = w.x + (w.y * maxwidth)
-  let gety y w = y == w.y
-  let getx x w = x == w.x
+  let gety w = w.y
+  let checky y w = y == w.y
+  let chekx x w = x == w.x
+  let samePlace x y w = x == w.x && y == w.y
+
+  let samePos xy w =
+    let x, y = xy in
+    x == w.x && y == w.y
 
   let advance walker pipe =
     match pipebend walker.d pipe with
@@ -157,10 +165,10 @@ let mapOfPipes map path =
   let sortedPath = List.sort compare path in
   let rec aux h =
     if h < height then
-      let hpart = List.filter (Walker.gety h) sortedPath in
+      let hpart = List.filter (Walker.checky h) sortedPath in
       let rec makeRow w =
         if w < width then
-          (if List.exists (Walker.getx w) hpart then 'x' else '.')
+          (if List.exists (Walker.chekx w) hpart then 'x' else '.')
           :: makeRow (w + 1)
         else []
       in
@@ -168,6 +176,37 @@ let mapOfPipes map path =
     else []
   in
   aux 0
-(* let makeRow =
-   let maker w =(if List.exists (Walker.getx w) hpart then 'x' else '.') in
-   makeAlist maker width *)
+
+let printwy (w : Walker.walker) = Printf.printf "%i " w.y
+
+let consecutive w1 w2 w3 =
+  let open Walker in
+  (w1.y - w2.y |> Int.abs) - 1 == 0 && (w2.y - w3.y |> Int.abs) - 1 == 0
+
+let mul w myd =
+  let open Walker in
+  match myd with Nord -> w.y | South -> -w.y | East -> w.x | West -> -w.x
+
+let mulxDy w w2 =
+  let open Walker in
+  let dy = w2.y - w.y in
+  w.x * dy
+
+let mulyDx w w2 =
+  let open Walker in
+  let dx = w2.y - w.y in
+  w.y * dx
+
+let walkForTask2 pipemap =
+  let pipeline = findInitialPoints pipemap |> walkPipes pipemap in
+  let rec aux pp r =
+    match pp with
+    | [] -> r
+    | w :: [] ->
+        let w2 = List.hd pipeline in
+        mulxDy w w2 :: r
+    | w :: (w2 :: _ as p) -> aux p (mulxDy w w2 :: r)
+  in
+  abs (aux pipeline [] |> Utilities.accumulateSum)
+  - (List.length pipeline / 2)
+  + 1

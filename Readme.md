@@ -108,3 +108,8 @@ I'm working with the hope that the goodwill of the puzzlemaker did not create tu
 Task1 done, simply making 2 walker go intoeach other did the trick, now i have to calculate THE AREA
 
 (but before a little refaftor to make the thing more functional)
+
+Task 2 was blocking for me:
+3 days to come up to Green's integrals and a evebing to peek solution and get to this Pick's theorem correctio, I am a mess..
+I wanted to floodfill, then the algorithm looked to me rather boring to implement (not because is borign, but because in ocaml looked to me too long)
+

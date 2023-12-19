@@ -29,7 +29,7 @@ let examplesimple = [ "....."; ".S-7."; ".|.|."; ".L-J."; "....." ]
 *)
 let exampleAreaSimple =
   [
-    "...........";
+    (* "..........."; *)
     ".S-------7.";
     ".|F-----7|.";
     ".||.....||.";
@@ -37,7 +37,34 @@ let exampleAreaSimple =
     ".|L-7.F-J|.";
     ".|..|.|..|.";
     ".L--J.L--J.";
-    "...........";
+    (* "..........."; *)
+  ]
+
+let exampleSimpleSmaller =
+  [
+    "..........";
+    ".S------7.";
+    ".|F----7|.";
+    ".||OOOO||.";
+    ".||OOOO||.";
+    ".|L-7F-J|.";
+    ".|II||II|.";
+    ".L--JL--J.";
+    "..........";
+  ]
+
+let exampleAreaComplex =
+  [
+    ".F----7F7F7F7F-7....";
+    ".|F--7||||||||FJ....";
+    ".||.FJ||||||||L7....";
+    "FJL7L7LJLJ||LJ.L-7..";
+    "L--J.L7...LJS7F-7L7.";
+    "....F-J..F7FJ|L7L7L7";
+    "....L7.F7||L7|.L7L7|";
+    ".....|FJLJ|FJ|F7|.LJ";
+    "....FJL-7.||.||||...";
+    "....L---J.LJ.LJLJ...";
   ]
 
 let walker = Alcotest.testable Pipeline.Walker.pp Pipeline.Walker.equal
@@ -53,6 +80,9 @@ let test_InitialPoints map res () =
 
 let test_Task1 map res () =
   Alcotest.(check int) "same distance" res (Pipeline.walkForTask1 map)
+
+let test_Task2 map res () =
+  Alcotest.(check int) "same area" res (Pipeline.walkForTask2 map)
 
 let () =
   let open Alcotest in
@@ -74,5 +104,9 @@ let () =
         [
           test_case "find path (simple)" `Quick (test_Task1 examplesimple 4);
           test_case "find path" `Quick (test_Task1 example1 8);
+          (* test_case "find path" `Quick (test_Task2 examplesimple 1); *)
+          test_case "find path" `Quick (test_Task2 exampleAreaSimple 4);
+          test_case "find path" `Quick (test_Task2 exampleSimpleSmaller 4);
+          test_case "find path" `Quick (test_Task2 exampleAreaComplex 8);
         ] );
     ]
