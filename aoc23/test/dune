@@ -52,3 +52,8 @@
  (name test_aoc23_10)
  (modules test_aoc23_10)
  (libraries alcotest pipeline))
+
+(test
+ (name test_aoc23_11)
+ (modules test_aoc23_11)
+ (libraries alcotest galaxies))

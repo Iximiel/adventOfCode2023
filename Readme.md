@@ -113,3 +113,8 @@ Task 2 was blocking for me:
 3 days to come up to Green's integrals and a evebing to peek solution and get to this Pick's theorem correctio, I am a mess..
 I wanted to floodfill, then the algorithm looked to me rather boring to implement (not because is borign, but because in ocaml looked to me too long)
 
+## Day11
+
+A map of the sky to be modified and then searching for the shortest path between point in it
+I think that I may use the manhattan  distance, at least for task 1, and hope that it will work for task 2
+

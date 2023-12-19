@@ -53,3 +53,7 @@
  (name pipeline)
  (modules pipeline)
  (libraries fmt utilities))
+
+(library
+ (name galaxies)
+ (modules galaxies))
