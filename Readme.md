@@ -124,3 +124,8 @@ Manatthan distance was the way :smile:, at leas one fast after day10 :sad:
 
 Task2 is too easy, could be a matter of a simple refactor?
 Ok, no simple refactor I need to be more clever and efficient
+maybe is just matter of seing how much the distances change with expansion and extrapolate
+
+I simply calculate the difference between expasion1 and expansion 0 for each galaxy and added that number to the coordinates, multiplied by 1000000-1... the -1 made me fail the tests and block my self on a non-problem yay
+
+I wonder if I should make the repo private for the sake of my cv... :laugh:
