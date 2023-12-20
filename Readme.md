@@ -132,4 +132,4 @@ I wonder if I should make the repo private for the sake of my cv... :laugh:
 
 ## Day 12
 
-This appear to me as a 1d nonogram, I may be able to solve it
+This appear to me as a 1d nonogram, I may be able to solve it bay hand, I may have to do some research, or just bruteforce it

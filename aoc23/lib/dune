@@ -61,4 +61,5 @@
 
 (library
  (name nonogram1d)
- (modules nonogram1d))
+ (modules nonogram1d)
+ (libraries utilities))
