@@ -62,4 +62,4 @@
  (public_name aoc23_11)
  (name day11)
  (modules day11)
- (libraries galaxies))
+ (libraries galaxies utilities))

@@ -13,6 +13,8 @@ At day 5 i decide to move everithing in a single project, this may be a bad idea
 
 At some point I decide to write a statement before task1, after task1 and after task2 , and sometime before task2, making this a sort of diary, enjoy
 
+I am quite happy: if I go at this rate I may solve all the puzzle before the next year edition (lol).
+
 ## Day 1
 My solution was to regex all the problems away.
 Ocaml makes finding regex quite easy (apart thata strange  way or declaring raw strings`{||}`)
@@ -118,3 +120,7 @@ I wanted to floodfill, then the algorithm looked to me rather boring to implemen
 A map of the sky to be modified and then searching for the shortest path between point in it
 I think that I may use the manhattan  distance, at least for task 1, and hope that it will work for task 2
 
+Manatthan distance was the way :smile:, at leas one fast after day10 :sad:
+
+Task2 is too easy, could be a matter of a simple refactor?
+Ok, no simple refactor I need to be more clever and efficient

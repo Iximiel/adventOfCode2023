@@ -136,3 +136,13 @@ let accumulate op init =
   aux
 
 let accumulateSum = accumulate ( + ) 0
+
+let rotate lol =
+  let width = List.length (List.nth lol 0) in
+
+  let makeRow col =
+    let rec aux = function [] -> [] | l :: ll -> List.nth l col :: aux ll in
+    aux lol
+  in
+  let rec aux w r = if w == width then r else aux (w + 1) (makeRow w :: r) in
+  aux 0 [] |> List.rev

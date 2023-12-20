@@ -56,4 +56,5 @@
 
 (library
  (name galaxies)
- (modules galaxies))
+ (modules galaxies)
+ (libraries utilities))
