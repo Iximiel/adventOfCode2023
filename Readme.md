@@ -129,3 +129,7 @@ maybe is just matter of seing how much the distances change with expansion and e
 I simply calculate the difference between expasion1 and expansion 0 for each galaxy and added that number to the coordinates, multiplied by 1000000-1... the -1 made me fail the tests and block my self on a non-problem yay
 
 I wonder if I should make the repo private for the sake of my cv... :laugh:
+
+## Day 12
+
+This appear to me as a 1d nonogram, I may be able to solve it

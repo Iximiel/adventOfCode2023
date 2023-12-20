@@ -58,3 +58,7 @@
  (name galaxies)
  (modules galaxies)
  (libraries utilities))
+
+(library
+ (name nonogram1d)
+ (modules nonogram1d))

@@ -63,3 +63,9 @@
  (name day11)
  (modules day11)
  (libraries galaxies utilities))
+
+(executable
+ (public_name aoc23_12)
+ (name day12)
+ (modules day12)
+ (libraries nonogram1d))

@@ -57,3 +57,8 @@
  (name test_aoc23_11)
  (modules test_aoc23_11)
  (libraries alcotest galaxies))
+
+(test
+ (name test_aoc23_12)
+ (modules test_aoc23_12)
+ (libraries alcotest nonogram1d))
